@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 title = 'Product List';
-imageSize: any = '';
+imageSize = 90;
+imageStyle = 'max-width: 90px';
 fillable = '';
   constructor() { }
   product: any[] = [
