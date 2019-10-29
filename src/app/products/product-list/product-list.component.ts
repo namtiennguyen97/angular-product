@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SProduct} from '../SProduct';
+import {ProductServiceService} from '../product-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,31 +12,7 @@ title = 'Product List';
 imageSize = 90;
 imageStyle = 'max-width: 90px';
 fillable = '';
-
-  constructor() { }
-  product: SProduct[] = [
-    {
-      id: 1,
-      name: 'heroin',
-      price: 200000,
-      image: './assets/images/2.jpg',
-      productStatus: 'available'
-    },
-    {
-      id: 2,
-      name: 'knife',
-      price: 300000,
-      image: './assets/images/dullll.png',
-      productStatus: 'out-of-stock'
-    },
-    {
-      id: 3,
-      name: 'hot weapon',
-      price: 526322,
-      image: './assets/images/mercy.png',
-      productStatus: 'available'
-    }
-  ];
+  constructor(private productService: ProductServiceService) { }
   filtereredProduct: SProduct[];
   statusImage = true;
   setStatus() {
@@ -47,15 +24,18 @@ fillable = '';
  getFilter() {
     return this.fillable;
 }
+getProductList() {
+ return this.productService.getProduct();
+}
   ngOnInit() {
-    this.filtereredProduct = this.product;
+    this.filtereredProduct = this.productService.getProduct();
   }
   setFilter(value: string) {
     this.fillable = value;
-    this.filtereredProduct = this.fillable ? this.filter(this.fillable) : this.product;
+    this.filtereredProduct = this.fillable ? this.filter(this.fillable) : this.productService.getProduct();
   }
   filter(filterBy: string): SProduct[] {
-    return this.product.filter((product: SProduct) => product.name.indexOf(filterBy) !== -1);
+    return this.productService.getProduct().filter((product: SProduct) => product.name.indexOf(filterBy) !== -1);
   }
 
 }

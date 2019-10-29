@@ -1,3 +1,18 @@
-<p>Searching:</p>
-<input type="text" [(ngModel)]="keyword" (ngModelChange)="getKeyWord()">
-<h2 style="color: red">Filter by name: {{keyword}}</h2>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Filter</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    </ul>
+
+      <input class="form-control md-4" type="text" [(ngModel)]="keyword" (ngModelChange)="getKeyWord()" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+  </div>
+</nav>
+<a style="color: red">Filter by name: {{keyword}}</a>
